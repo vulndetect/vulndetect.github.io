@@ -1,110 +1,239 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vuln Detect - Hacking Ético</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d1117;
-      color: #c9d1d9;
-      line-height: 1.6;
-    }
-
-    header {
-      background-color: #161b22;
-      padding: 40px 20px;
-      text-align: center;
-      border-bottom: 1px solid #21262d;
-    }
-
-    header h1 {
-      color: #00ff7f;
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: #8b949e;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .section-title {
-      color: #00ff7f;
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #00ff7f;
-      padding-bottom: 5px;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    ul li {
-      margin-bottom: 15px;
-      padding: 10px;
-      background-color: #161b22;
-      border-left: 4px solid #00ff7f;
-    }
-
-    .contact-button {
-      display: inline-block;
-      background-color: #00ff7f;
-      color: #0d1117;
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: background-color 0.3s ease;
-      margin-top: 30px;
-    }
-
-    .contact-button:hover {
-      background-color: #00e673;
-    }
-
-    footer {
-      background-color: #161b22;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #6e7681;
-      border-top: 1px solid #21262d;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuln Detect - Seguridad Ofensiva Profesional</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --primary: #9fef00;
+            --primary-dark: #7bc600;
+            --text-light: #e0e0e0;
+            --text-lighter: #ffffff;
+            --text-dark: #a0a0a0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--bg-darker);
+            padding: 2rem 0;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(159, 239, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            max-width: 600px;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--bg-darker);
+            border: 1px solid #222;
+            border-radius: 5px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background-color: var(--primary);
+            transition: height 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            height: 100%;
+        }
+        
+        .service-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-price {
+            color: var(--primary-dark);
+            font-weight: bold;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--bg-dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(159, 239, 0, 0.4);
+        }
+        
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+        
+        .contact-section {
+            text-align: center;
+            background-color: var(--bg-darker);
+            padding: 4rem 0;
+        }
+        
+        .contact-text {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--bg-darker);
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+        
+        @media (max-width: 768px) {
+            .services {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Vuln Detect</h1>
-    <p>Servicios profesionales de hacking ético y seguridad ofensiva</p>
-  </header>
-
-  <div class="container">
-    <div class="section-title">Servicios Ofrecidos</div>
-    <ul>
-      <li><strong>Pentesting Web:</strong> Evaluamos la seguridad de tu sitio web e identificamos vulnerabilidades críticas. <em>$precio aquí</em></li>
-      <li><strong>Pentesting de Active Directory:</strong> Simulamos ataques en tu entorno interno para mejorar la seguridad de tu infraestructura. <em>$precio aquí</em></li>
-      <li><strong>[Espacio para servicio adicional]:</strong> Descripción y <em>$precio aquí</em></li>
-    </ul>
-
-    <div class="section-title">Contacto</div>
-    <p>¿Interesado en alguno de nuestros servicios?</p>
-    <a href="https://tuformulario.com" class="contact-button">Llenar Formulario de Contacto</a>
-  </div>
-
-  <footer>
-    © 2025 Vuln Detect. Todos los derechos reservados.
-  </footer>
+    <header>
+        <div class="container">
+            <h1 class="logo">Vuln Detect</h1>
+            <p class="tagline">Servicios profesionales de hacking ético y seguridad ofensiva</p>
+        </div>
+    </header>
+    
+    <section class="container">
+        <h2>Servicios Ofrecidos</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3 class="service-title">Pentesting Web</h3>
+                <p>Evaluamos la seguridad de tu sitio web e identificamos vulnerabilidades críticas.</p>
+                <p class="service-price">$1,500 - $5,000</p>
+            </div>
+            
+            <div class="service-card">
+                <h3 class="service-title">Pentesting de Active Directory</h3>
+                <p>Simulamos ataques en tu entorno interno para mejorar la seguridad de tu infraestructura.</p>
+                <p class="service-price">$3,000 - $8,000</p>
+            </div>
+            
+            <div class="service-card">
+                <h3 class="service-title">Auditoría de Red</h3>
+                <p>Identificamos vulnerabilidades en tu infraestructura de red y dispositivos conectados.</p>
+                <p class="service-price">$2,500 - $6,000</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact-section">
+        <div class="container">
+            <p class="contact-text">¿Interesado en alguno de nuestros servicios?</p>
+            <a href="#" class="btn btn-large">Formulario de contacto</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Vuln Detect. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>
